@@ -1,56 +1,55 @@
 using System;
-using System.Collections.Generic;
 
 class Program
 {
     static void Main(string[] args)
     {
-        List<int> numbers = new List<int>();
-        
-        
-        int userNumber = -1;
-        while (userNumber != 0)
+        // This program exceeds core requirements by:
+        // - Creating a PromptGenerator class for better abstraction and flexibility
+        // - Making it easy to switch to a web-based or user-customized prompt system
+
+        Journal myJournal = new Journal();
+        PromptGenerator promptGenerator = new PromptGenerator();
+        bool running = true;
+
+        while (running)
         {
-            Console.Write("Enter a number (0 to quit): ");
-            
-            string userResponse = Console.ReadLine();
-            userNumber = int.Parse(userResponse);
-            
-            
-            if (userNumber != 0)
+            Console.WriteLine("Journal App Menu:");
+            Console.WriteLine("1. Write a new entry");
+            Console.WriteLine("2. Display the journal");
+            Console.WriteLine("3. Save the journal to a file");
+            Console.WriteLine("4. Load the journal from a file");
+            Console.WriteLine("5. Exit");
+            Console.Write("Choose an option (1-5): ");
+            string choice = Console.ReadLine();
+
+            switch (choice)
             {
-                numbers.Add(userNumber);
+                case "1":
+                    myJournal.AddEntry(promptGenerator);
+                    break;
+                case "2":
+                    myJournal.DisplayEntries();
+                    break;
+                case "3":
+                    Console.Write("Enter filename to save to: ");
+                    string saveFile = Console.ReadLine();
+                    myJournal.SaveToFile(saveFile);
+                    break;
+                case "4":
+                    Console.Write("Enter filename to load from: ");
+                    string loadFile = Console.ReadLine();
+                    myJournal.LoadFromFile(loadFile);
+                    break;
+                case "5":
+                    running = false;
+                    break;
+                default:
+                    Console.WriteLine("Invalid option. Try again.\n");
+                    break;
             }
         }
 
-        //  Compute  sum
-        int sum = 0;
-        foreach (int number in numbers)
-        {
-            sum += number;
-        }
-
-        Console.WriteLine($"The sum is: {sum}");
-
-        //  Compute  average
-        
-        float average = ((float)sum) / numbers.Count;
-        Console.WriteLine($"The average is: {average}");
-
-        //  Find  max
-        
-        
-        int max = numbers[0];
-
-        foreach (int number in numbers)
-        {
-            if (number > max)
-            {
-                
-                max = number;
-            }
-        }
-
-        Console.WriteLine($"The max is: {max}");
+        Console.WriteLine("Goodbye!");
     }
 }

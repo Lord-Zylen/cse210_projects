@@ -5,6 +5,7 @@ class Program
     static void Main(string[] args)
     {
         Journal myJournal = new Journal();
+        PromptGenerator promptGenerator = new PromptGenerator();
         bool running = true;
 
         while (running)
@@ -16,13 +17,12 @@ class Program
             Console.WriteLine("4. Load the journal from a file");
             Console.WriteLine("5. Exit");
             Console.Write("Choose an option (1-5): ");
-
             string choice = Console.ReadLine();
 
             switch (choice)
             {
                 case "1":
-                    myJournal.AddEntry();
+                    myJournal.AddEntry(promptGenerator);
                     break;
                 case "2":
                     myJournal.DisplayEntries();
