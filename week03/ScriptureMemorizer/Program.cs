@@ -1,3 +1,5 @@
+// For creativity, the program loads scriptures from the scriptures.txt file.
+
 using System;
 using System.IO;
 using System.Collections.Generic;
