@@ -1,0 +1,4 @@
+160
+SimpleGoal|Give a Talk|Be able to give a talk when asked|100|True
+EternalGoal|Read the scripture|Read the scriptures for 10mins|50
+ChecklistGoal|Atten church|Attend church every sunday|10|5|200|1
